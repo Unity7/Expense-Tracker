@@ -11,10 +11,22 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  //A new array is outputted and rendered after being filtered by the state of the selected year filter
   const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  let expensesContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <div>
       {" "}
@@ -23,17 +35,15 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+
+        {expensesContent}
       </Card>
     </div>
   );
 };
 
 export default Expenses;
+
+{
+  /* Conditional formatting using trenery expression using && which executes second phrase if condition in first phrase is met */
+}
