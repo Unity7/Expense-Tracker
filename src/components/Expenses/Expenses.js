@@ -1,4 +1,3 @@
-import ExpenseItem from "./ExpenseItem";
 import { useState } from "react";
 import "./Expenses.css";
 import Card from "../UI/Card";
