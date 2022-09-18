@@ -6,12 +6,6 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  //   const [userInput, setUserInput] = useState({
-  //     enteredTitle: "",
-  //     enteredAmount: "",
-  //     enteredDate: "",
-  //   });
-
   //if state is dependent on previous state, use function method to update the state (prevState will be automatically passed)
   const titleChangeHandler = (e) => {
     setEnteredTitle(e.target.value);
@@ -76,6 +70,10 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        {/* stopEditingHandler is passed down to Expenseform and props.onCancel will call that function at the NewExpense.js */}
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
